@@ -1,0 +1,41 @@
+int fscanf(FILE *restrict stream, const char *restrict format, ...);
+Scans input according to a format
+
+char *fgets(char * restrict str, int size, FILE * restrict stream);
+Reads at most size - 1 characters from stream into str
+
+FILE *fopen(const char * restrict path, const char * restrict mode);
+Opens file at path and associates a stream with it
+
+FILE *freopen(const char *path, const char *mode, FILE *stream);
+Opens file at path, associates stream with it, and closes original stream if it exists
+
+FILE *fdopen(int fildes, const char *mode);
+Associates stream with existing file descriptor fildes
+
+int fclose(FILE *stream);
+Dissociates stream from underlying file. If stream was being used for output, buffered output is flushed first, using fflush
+
+void fcloseall(void);
+Calls fclose on all open streams
+
+int fgetpos(FILE *restrict stream, fpos_t *restrict pos);
+Portable version of ftell that uses type fpos_t instead of long int. Gets current file position
+
+int fseek(FILE *stream, long offset, int whence);
+Sets position on stream to whence + offset, where whence can be some special constants like the start, current position, or end of file
+
+long ftell(FILE *stream);
+Gets the current position of stream
+
+void rewind(FILE *stream);
+Sets stream's position to the beginning of the file
+
+int fprintf(FILE *restrict stream, const char *restrict format, ...);
+Writes formatted output to stream
+
+size_t fwrite(const void *restrict ptr, size_t size, size_t nitems, FILE *restrict stream);
+Writes nitems objects of size bytes to stream, getting them from ptr
+
+size_t fread(void *restrict ptr, size_t size, size_t nitems, FILE *restrict stream);
+Reads nitems objects of size bytes from location pointed at by ptr to stream
